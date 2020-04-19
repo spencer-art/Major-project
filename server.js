@@ -13,7 +13,7 @@ dotenv.config({
 const app = require('./app');
 
 // Connect to db
-mongoose.connect('mongodb://localhost/The_Suits_Store', {
+mongoose.connect(process.env.DATABASE_LOCAL, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false,
@@ -38,7 +38,7 @@ db.once('open', function () {
 //     })
 //     .then(() => console.log("DB connection successful!"));
 
-const port = 8000;
+const port = process.env.PORT || 8000;
 const server = app.listen(port, () => {
     console.log(`App running on port ${port}...`);
 });
