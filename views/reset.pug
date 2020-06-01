@@ -1,0 +1,20 @@
+extends base
+
+
+block content
+  main.main
+    .user-view
+            .user-view__form-container
+                h2 Password change
+                form.form-user-password
+                    .form-group
+                        label.form__label(for='password-current') Current password
+                        input#password-current.contact-form-text(type='password', placeholder='••••••••', required, minlength='8')
+                    .form-group
+                        label.form__label(for='password') New password
+                        input#password.contact-form-text(type='password', placeholder='••••••••', required, minlength='8')
+                    .form-group
+                        label.form__label(for='password-confirm') Confirm password
+                        input#password-confirm.contact-form-text(type='password', placeholder='••••••••', required, minlength='8')
+                    .form-group
+                        input.btn.btn--save-password(type='submit', value='Save Password')    

@@ -1,0 +1,29 @@
+
+header
+  nav
+    a.logo(href='/')
+      img(src='/images/w.png')
+    div
+      i.fas.fa-chevron-circle-down
+    ul#list
+      if user
+        li.list-items
+          a(href='/me')
+            img.nav__user-img(src=`/images/users/${user.photo}` alt=`Photo of ${user.name}`)
+            span= user.name.split(' ')[0]
+        li.list-items.logout
+          a(href='/login') logout
+      else
+        li.list-items
+          a(href='/login') login
+        li.list-items
+          a(href='/signup') signup  
+        
+
+
+//- a(href='/cart')
+//-             i.fas.fa-shopping-basket
+//-               if typeof cart!==undefined
+//-                 cart.length
+//-               else
+//-                 span 0

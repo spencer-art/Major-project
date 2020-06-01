@@ -1,0 +1,60 @@
+extends base
+
+mixin navItem(link, text, active)
+  li(class=`${active ? 'side-nav--active' : ''}`)
+    a(href=`${link}`)
+      | #{text}
+
+block content
+  main.main
+    .user-view
+        .sidebar
+            ul.side-nav
+                +navItem('#', 'Settings',true)
+                +navItem('/my-orders', 'My orders')
+                +navItem('#', 'My reviews')
+                +navItem('#', 'Billing')
+            - if (user.role === 'admin')
+                .admin-nav
+                h3 Admin
+                ul.side-nav
+                    +navItem('/suits', 'Create product')
+                    +navItem('#', 'Manage users')
+                    +navItem('#', 'Manage reviews')
+                    +navItem('#', 'Manage bookings')
+
+        .user-view__content
+            .user-view__form-container
+                h2 Your account settings
+          
+                //- WITHOUT API
+                //- form.form.form-user-data(action='/submit-user-data' method='POST')
+                
+                //- WITH API
+                form.contact-form.form-user-data
+                    .form-group
+                        input#name.contact-form-text(type='text', value=`${user.name}`, required, name='name')
+                    .form-group
+                        input#email.contact-form-text(type='email', value=`${user.email}`, required, name='email')
+                    .form-group.form__photo-upload
+                        img.form__user-photo(src=`/images/users/${user.photo}`, alt='User photo')
+                        input.form__upload(type='file', accept='image/*', id='photo', name='photo')
+                        label(for='photo') Choose new photo
+                    .form-group
+                        input.btn(type='submit', value='Save')       
+            .line &nbsp; 
+            
+            .user-view__form-container
+                h2 Password change
+                form.form-user-password
+                    .form-group
+                        label.form__label(for='password-current') Current password
+                        input#password-current.contact-form-text(type='password', placeholder='••••••••', required, minlength='8')
+                    .form-group
+                        label.form__label(for='password') New password
+                        input#password.contact-form-text(type='password', placeholder='••••••••', required, minlength='8')
+                    .form-group
+                        label.form__label(for='password-confirm') Confirm password
+                        input#password-confirm.contact-form-text(type='password', placeholder='••••••••', required, minlength='8')
+                    .form-group
+                        input.btn.btn--save-password(type='submit', value='Save Password')    

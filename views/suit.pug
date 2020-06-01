@@ -1,0 +1,53 @@
+extends base
+include _reviewCard
+
+block append head
+    
+    
+
+block content
+    .container-fluid 
+        .product-div
+            .child-div
+                .col-xs-6.right
+                    #product-carousel.carousel.slide.carousel-fade(data-ride='carousel', data-interval='2000')
+                        .carousel-inner
+                            -var i = 0
+                                for image in suits.images
+                                    if i == 0
+                                        .item.active
+                                            img(src=`/images/suits/${image}`)
+                                            -i++
+                                    else
+                                        .item
+                                            img(src=`/images/suits/${image}`)
+                                            -i++
+                            ul.carousel-indicators
+                                -var n = 0
+                                    while n < suits.images.length
+                                        if n == 0
+                                            li.active(data-target="#product-carousel",data-slide-to=n)
+                                                - n++   
+                                        else
+                                            li(data-target="#product-carousel",data-slide-to=n)
+                                                - n++
+
+                .col-xs-6.left
+                    h2=suits.name 
+                    p.long-copy=suits.description
+                    br
+                    p.long-copy=`fabric:  ${suits.fabric}` 
+                    p.long-copy=`construction:  ${suits.construction}`     
+                    p#product-rate=`INR ${suits.price}` 
+                    a(href=`/cart/add/${suits.slug}`).btn#add-cart add to cart
+                    a(href=`#`).btn#buy-now(data-suit-id=`${suits.id}`) buy now
+                    - if (user.role === 'admin')
+                        a(href=`/update-product/${suits.id}`)#update(data-suit-id=`${suits.id}`)
+                            i.fas.fa-pen-fancy.pen
+                        a(href=`/delete-product/${suits.id}`).delete
+                            <i class="fas fa-trash"></i>
+                
+    .review-div
+        .reviews
+            each review in suits.reviews
+                +reviewCard(review)

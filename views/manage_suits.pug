@@ -1,0 +1,35 @@
+extends base
+
+block content
+     main.main
+        .user-view
+            .user-view__content
+                .user-view__form-container
+                    h2 Create Your Product 
+                    form.contact-form.form-create-products
+                        .form-group
+                            label.form__label(for='pro-name') Title
+                            input#pro-name.contact-form-text(type='text', required)
+                        .form-group
+                            label.form__label(for='price') price
+                            input#price.contact-form-text(type='text', required)
+                        .form-group
+                            label.form__label(for='fabric') fabric
+                            input#fabric.contact-form-text(type='text', required)
+                        .form-group
+                            label.form__label(for='category') category
+                            input#category.contact-form-text(type='text', required)
+                        .form-group
+                            label.form__label(for='description') description
+                            textarea#description.contact-form-text(rows='3', placeholder='your message',required)
+                        .form-group.form__photo-upload
+                            img.form__user-photo(src='#')
+                            input.form__upload(type='file', accept='image/*', id='imageCover', name='imageCover')
+                            label(for='imageCover') Upload image cover
+                        .form-group.form__photo-upload
+                            img.form__user-photo(src='#')
+                            input.form__upload(type='file', accept='image/*', multiple,id='images', name='images')
+                            label(for='images') Upload image cover
+                        .form-group
+                            input.btn(type='submit', value='Save')       
+                    .line &nbsp;

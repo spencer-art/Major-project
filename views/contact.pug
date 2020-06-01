@@ -1,0 +1,17 @@
+extends base
+
+
+block content
+    main.main
+         .user-view.box.animated.fadeInUp(data-delay='0.7s')
+            .col-xs-6.right.contact
+                
+            .col-xs-6.left
+                h2 Drop us a line!
+                form.contact-form
+                    .form-group
+                        input#email.form-text(type='email', placeholder='your email')
+                    .form-group
+                        textarea.form-text(rows='6',placeholder="your message")
+                        input.btn(type='submit', value='Send')
+                    

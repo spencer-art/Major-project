@@ -1,0 +1,37 @@
+extends base
+
+
+block content
+     main.main
+        .user-view
+            .user-view__content
+                .user-view__form-container
+                    h2 Update Your Product 
+                    form.contact-form.form-update-products
+                        .form-group
+                            label.form__label(for='up-name') Title
+                            input#up-name.contact-form-text(type='text', value=`${suits.name}`)
+                        .form-group
+                            label.form__label(for='price') price
+                            input#price.contact-form-text(type='text',value=`${suits.price}`)
+                        .form-group
+                            label.form__label(for='up-fabric') fabric
+                            input#up-fabric.contact-form-text(type='text', value=`${suits.fabric}`)
+                        .form-group
+                            label.form__label(for='category') category
+                            input#category.contact-form-text(type='text',value=`${suits.category}`)
+                        .form-group
+                            label.form__label(for='up-description') description
+                            textarea#up-description.contact-form-text(rows='6')
+                               | #{suits.description}
+                        .form-group.form__photo-upload
+                            img.form__user-photo(src='#')
+                            input.form__upload(type='file', accept='image/*', id='up-imageCover', name='imageCover')
+                            label(for='imageCover') Upload image cover
+                        .form-group.form__photo-upload
+                            img.form__user-photo(src='#')
+                            input.form__upload(type='file', accept='image/*', multiple,id='up-images', name='images')
+                            label(for='images') Upload images
+                        .form-group
+                            input.btn(type='submit', value='Save')       
+                    .line &nbsp;

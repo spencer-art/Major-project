@@ -1,0 +1,30 @@
+extends base
+
+block content
+    main.main
+        .user-view
+            .user-view__content
+                .user-view__form-container
+                    h2 My Cart 
+                    table.table.table-dark.table-striped.alignmiddle
+                        tbody
+                            tr
+                                th Title
+                                th Price
+                                th Quantity
+                                th
+                                th Subtotal
+                            -var total = 0;
+                            -cart.each(function(product){
+                                -var sub = parseFloat(product.qty * product.price).toFixed(2)
+                                -total += +sub
+                                  tr
+                                    td= product.title
+                                    td=product.price
+                                    td=product.qty
+                                    td
+                                        a(href='') +
+                                        a(href='') -
+                                        a(href='') Clear
+                                    td=sub 
+                            -});

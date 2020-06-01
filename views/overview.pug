@@ -1,0 +1,49 @@
+extends base
+
+block content
+    main.main
+        .card-conatiner
+            each suit in suits
+                    .col-lg-4.col-md-3.col-sm-3.col-12
+                        .card
+                            img.card-img-top(src=`/images/suits/${suit.imageCover}`)
+                            .side
+                                a(href=`/suit/${suit.slug}`) view
+                            .card-text.card__text 
+                                p=suit.name 
+                                p=`INR ${suit.price}`    
+                            
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    //- .hero
+    //-     .hero-text-box
+    //-         h1 SUITS
+    //- section.suits
+    //-     .container-fluid 
+    //-         h1.filter-wed filter
+    //-         .row.justify-content-center
+    //-             each suit in suits
+    //-                 .col-lg-4.col-md-3.col-sm-3.col-12
+    //-                     .card
+    //-                         img.card-img-top(src=`/images/suits/${suit.imageCover}`)
+    //-                         .card-text.card__text 
+    //-                             p=suit.name 
+    //-                             p=`INR ${suit.price}`    
+    //-                         ul.open
+    //-                             li
+    //-                                 a.modal-open(href=`/suit/${suit.slug}` data-modal='bg-modal')
+    //-                                     i.fas.fa-eye

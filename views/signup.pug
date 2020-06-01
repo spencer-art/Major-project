@@ -1,0 +1,21 @@
+extends base
+
+
+block content
+    main.main
+         .user-view.box.animated.fadeInUp(data-delay='0.7s')
+            .col-xs-6.right.signup
+                .letter4 Sign Up   
+            
+             
+            .col-xs-6.left
+                form.contact-form.form-signup
+                    .form-group
+                        input#name.form-text(type='text', placeholder='your name', data-wow-delay='0.8s')
+                    .form-group
+                        input#email.form-text(type='email', placeholder='your email', data-wow-delay='0.7s')
+                    .form-group
+                        input#password.form-text(type='password', placeholder='your password', data-wow-delay='0.8s')
+                    .form-group
+                        input#passwordConfirm.form-text(type='password', placeholder='confirm password', data-wow-delay='0.8s') 
+                        input.btn(type='submit', value='alright!')

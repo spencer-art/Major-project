@@ -1,0 +1,15 @@
+extends base
+
+
+block content
+    main.main
+         .user-view.box.animated.fadeInUp(data-delay='0.7s')
+            .user-view__form-container
+                    h2 Forgot Password? 
+                    form.contact-form.forgot-password
+                        .form-group
+                            label.form__label(for='email') Enter your email
+                            input#email.contact-form-text(type='email', required)
+                        .form-group
+                            input.btn(type='submit', value='Send it!')  
+            
