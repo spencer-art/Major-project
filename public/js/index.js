@@ -89,7 +89,6 @@ if (userPasswordForm)
 
 if (createProduct)
     createProduct.addEventListener("submit", async e => {
-        console.log("ssssssssss");
         e.preventDefault();
         const formCreate = new FormData();
         formCreate.append("name", document.getElementById("pro-name").value);
@@ -141,7 +140,7 @@ if (SignUp)
         });
     });
 
-if (filterBtn) filterBtn.addEventListener("click", filterWed);
+
 
 if (orderBtn)
     orderBtn.addEventListener("click", e => {

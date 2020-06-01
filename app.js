@@ -10,6 +10,7 @@ const hpp = require("hpp");
 const bodyparser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
+const compression = require("compression");
 
 const AppError = require("./utils/appError");
 const globalErrorHandler = require("./controller/errorController");
@@ -17,7 +18,6 @@ const suitRoutes = require("./routes/suits");
 const viewRoutes = require("./routes/viewRoutes");
 const userRouter = require("./routes/userRoutes");
 const orderRouter = require("./routes/orderRoutes");
-const cartRouter = require("./routes/cartRoute");
 const reviewRouter = require("./routes/reviewsRoute");
 
 const app = express();
@@ -35,19 +35,19 @@ if (process.env.NODE_ENV === "development") {
 const limiter = rateLimit({
     max: 100,
     windowMs: 60 * 60 * 1000,
-    message: "Too many requests from this IP, please try again in an hour!"
+    message: "Too many requests from this IP, please try again in an hour!",
 });
 app.use("/api", limiter);
 
 // Body parser, reading data from body into req.body
 app.use(
     bodyparser.json({
-        limit: "10kb"
+        limit: "10kb",
     })
 );
 app.use(
     bodyparser.urlencoded({
-        extended: true
+        extended: true,
     })
 );
 app.use(cookieParser());
@@ -58,8 +58,8 @@ app.use(
         resave: false,
         saveUninitialized: true,
         cookie: {
-            maxAge: 180 * 60 * 1000
-        }
+            maxAge: 180 * 60 * 1000,
+        },
     })
 );
 
@@ -72,7 +72,7 @@ app.use(xss());
 // Prevent parameter pollution
 app.use(
     hpp({
-        whitelist: ["price"]
+        whitelist: ["price"],
     })
 );
 //Handling CORS errors
@@ -86,10 +86,12 @@ app.use((req, res, next) => {
     next();
 });
 
+app.use(compression());
+
 // Test middleware
 app.use((req, res, next) => {
     req.requestTime = new Date().toISOString();
-    console.log(req.cookies);
+    //console.log(req.cookies);
     next();
 });
 //view engine setup
@@ -99,7 +101,7 @@ app.set("view engine", "pug");
 //set public folder
 app.use(express.static(path.join(__dirname, "/public")));
 
-app.get('*', function (req, res, next) {
+app.get("*", function (req, res, next) {
     res.locals.cart = req.session.cart;
     next();
 });

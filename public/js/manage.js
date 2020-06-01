@@ -8,7 +8,7 @@ export const create = async (data) => {
     try {
         const res = await axios({
             method: "POST",
-            url: "http://localhost:8000/api/v1/suits",
+            url: "/api/v1/suits",
             data
         });
         //res.data here is the json data we sent to API
