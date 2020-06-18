@@ -12,19 +12,7 @@ dotenv.config({
 });
 const app = require("./app");
 
-// Connect to db
-// mongoose.connect(process.env.DATABASE_LOCAL, {
-//  useNewUrlParser: true,
-//  useCreateIndex: true,
-//  useFindAndModify: false,
-//  useUnifiedTopology: true,
-// });
-// var db = mongoose.connection;
-// db.on("error", console.error.bind(console, "connection error:"));
-// db.once("open", function() {
-//  console.log("Connected to MongoDB");
-// });
-
+//connect db
 const DB = process.env.DATABASE.replace(
  "<PASSWORD>",
  process.env.DATABASE_PASSWORD
