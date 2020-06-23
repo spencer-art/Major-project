@@ -87,6 +87,9 @@ PARAGRAPHS
  transition: 0.4s linear;
 }
 
+#buy-now{
+ margin left:35%;
+
 .btn:hover {
  color: #fff;
  background: #000;
