@@ -39,7 +39,7 @@ block content
                     p.long-copy=`fabric:  ${suits.fabric}` 
                     p.long-copy=`construction:  ${suits.construction}`     
                     p#product-rate=`INR ${suits.price}` 
-                    a(href=`#`).btn#buy-now(data-suit-id=`${suits.id}`) buy now
+                    a(href=`#`).btn-buy#buy-now(data-suit-id=`${suits.id}`) buy now
                     - if (user.role === 'admin')
                         a(href=`/update-product/${suits.id}`)#update(data-suit-id=`${suits.id}`)
                             i.fas.fa-pen-fancy.pen
