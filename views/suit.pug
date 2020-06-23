@@ -39,7 +39,6 @@ block content
                     p.long-copy=`fabric:  ${suits.fabric}` 
                     p.long-copy=`construction:  ${suits.construction}`     
                     p#product-rate=`INR ${suits.price}` 
-                    a(href=`/cart/add/${suits.slug}`).btn#add-cart add to cart
                     a(href=`#`).btn#buy-now(data-suit-id=`${suits.id}`) buy now
                     - if (user.role === 'admin')
                         a(href=`/update-product/${suits.id}`)#update(data-suit-id=`${suits.id}`)
